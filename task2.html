@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arithmetic Operations</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arithmetic Operations</h1>
+    <label for="num1">Number 1:</label>
+    <input type="text" id="num1" onblur="performOperation()">
+    <span id="num1Error" class="error"></span>
+    <br>
+    <label for="num2">Number 2:</label>
+    <input type="text" id="num2" onblur="performOperation()">
+    <span id="num2Error" class="error"></span>
+    <br>
+    <button onclick="performOperation('+')">Add</button>
+    <button onclick="performOperation('-')">Subtract</button>
+    <button onclick="performOperation('*')">Multiply</button>
+    <button onclick="performOperation('/')">Divide</button>
+    <br>
+    <label id="msg"></label>
+
+    <script>
+        function performOperation(operator) {
+            var num1 = document.getElementById('num1').value;
+            var num2 = document.getElementById('num2').value;
+            var msgLabel = document.getElementById('msg');
+            var num1Error = document.getElementById('num1Error');
+            var num2Error = document.getElementById('num2Error');
+            
+ 
+            num1Error.textContent = '';
+            num2Error.textContent = '';
+      
+            if (num1 === '' || num2 === '') {
+                if (num1 === '') {
+                    num1Error.textContent = '* Field is required';
+                }
+                if (num2 === '') {
+                    num2Error.textContent = '* Field is required';
+                }
+                return;
+            }
+       
+            if (isNaN(num1)) {
+                num1Error.textContent = '* Invalid input';
+                return;
+            }
+            
+            if (isNaN(num2)) {
+                num2Error.textContent = '* Invalid input';
+                return;
+            }
+            
+           
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+            
+            var result;
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    break;
+            }
+            
+           
+            msgLabel.textContent = 'Result: ' + result;
+        }
+    </script>
+</body>
+</html>

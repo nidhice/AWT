@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSPIT Institute Details</title>
+</head>
+<body>
+    <h1>CSPIT Institute Details</h1>
+    <div id="cspitDetails"></div>
+    <h2>Department CE Details</h2>
+    <div id="ceDetails"></div>
+
+    <script>
+
+        var CSPIT = {
+            departments: ['CE', 'IT', 'CS', 'EC', 'EE', 'CL', 'ME'],
+            yearOfEstablishment: 2004,
+            location: 'Anand, Gujarat, India',
+            getDetails: function () {
+                return 'Year of Establishment: ' + this.yearOfEstablishment +
+                    '<br>Location: ' + this.location +
+                    '<br>Departments: ' + this.departments.join(', ');
+            }
+        };
+
+    
+        var CE = Object.create(CSPIT);
+        CE.totalStudents = 250;
+        CE.totalFaculties = 30;
+
+        var cspitDetailsDiv = document.getElementById('cspitDetails');
+        cspitDetailsDiv.innerHTML = '<h3>CSPIT Institute Details:</h3>' + CSPIT.getDetails();
+
+        var ceDetailsDiv = document.getElementById('ceDetails');
+        ceDetailsDiv.innerHTML = '<h3>Department CE Details:</h3>' +
+            'Total Students: ' + CE.totalStudents + '<br>' +
+            'Total Faculties: ' + CE.totalFaculties;
+    </script>
+</body>
+</html>
